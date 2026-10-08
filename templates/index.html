@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Performance Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+
+        .container {
+            width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background: blue;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: lightgreen;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Employee Performance Prediction</h1>
+
+<form action="/predict" method="POST">
+
+<label>Environment Satisfaction</label>
+<input type="number" name="EmpEnvironmentSatisfaction" min="1" max="4" required>
+
+<label>Last Salary Hike Percent</label>
+<input type="number" name="EmpLastSalaryHikePercent" required>
+
+<label>Work Life Balance</label>
+<input type="number" name="EmpWorkLifeBalance" min="1" max="4" required>
+
+<label>Experience Years in Current Role</label>
+<input type="number" name="ExperienceYearsInCurrentRole" min="0" required>
+
+<label>Years Since Last Promotion</label>
+<input type="number" name="YearsSinceLastPromotion" min="0" required>
+
+<label>Years With Current Manager</label>
+<input type="number" name="YearsWithCurrManager" min="0" required>
+
+<label>Experience Years at This Company</label>
+<input type="number" name="ExperienceYearsAtThisCompany" min="0" required>
+
+<label>Employee Department</label>
+<select name="EmpDepartment" required>
+    <option value="0">Select Department</option>
+    <option value="1">Human Resources</option>
+    <option value="2">Research & Development</option>
+    <option value="3">Sales</option>
+</select>
+
+<label>Over Time</label>
+<select name="OverTime" required>
+    <option value="0">No</option>
+    <option value="1">Yes</option>
+</select>
+
+<label>Employee Job Role</label>
+<select name="EmpJobRole" required>
+    <option value="0">Healthcare Representative</option>
+    <option value="1">Human Resources</option>
+    <option value="2">Laboratory Technician</option>
+    <option value="3">Manager</option>
+    <option value="4">Manufacturing Director</option>
+    <option value="5">Research Director</option>
+    <option value="6">Research Scientist</option>
+    <option value="7">Sales Executive</option>
+    <option value="8">Sales Representative</option>
+</select>
+
+<button type="submit">Predict Performance</button>
+
+</form>
+
+{% if prediction_text %}
+<div class="result">
+    {{ prediction_text }}
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
